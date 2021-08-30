@@ -40,6 +40,7 @@ function playRound() {
     ) {
         playerScore++;
         gameOver();
+        console.log("Player won the round")
         return "You won the round.";
     } else if (
         computerSelection === "rock" && playerSelection === "scissors" ||
@@ -48,18 +49,31 @@ function playRound() {
     ) {
         computerScore++;
         gameOver();
+        console.log("Computer won the round")
         return "Computer won the round.";
     } else {
         return "Tie."
     }
 }
 
-function game() {
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
+/*function game() {
+    while (playerScore < 5 || computerScore < 5) {
+        playRound();
+    }
 }
+*/
+
+function game () {
+    while(playerScore <= 5 || computerScore <= 5) {
+        playRound();
+        if (playerScore === 5) {
+            break;
+        } else if (computerScore === 5) {
+            break;
+        }
+    }
+}
+
+game();
 
 console.log(playRound(playerSelection, computerSelection));
